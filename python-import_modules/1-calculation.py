@@ -1,13 +1,25 @@
 #!/usr/bin/python3
 
-
 from calculator_1 import add, sub, mul, div
 
-a = 10
-b = 5i
 
-# Print results using f-strings (avoiding multiple print statements)
-print(f"{a} + {b} = {add(a, b)}")
-print(f"{a} - {b} = {sub(a, b)}")
-print(f"{a} * {b} = {mul(a, b)}")
-print(f"{a} / {b} = {div(a, b)}")
+def perform_calculation(a: int, b: int) -> None:
+    """
+    Performs simple math operations
+
+    Args:
+        a (int): operand 1
+        b (int): operand 2
+    """
+    operators = {"+": add, "-": sub, "*": mul, "/": div}
+
+    for operator, calculator in operators.items():
+        print("{:d} {:s} {:d} = {:d}".format(a, operator, b, calculator(a, b)))
+
+
+if __name__ == "__main__":
+    a = 10
+    b = 5
+
+    # let's perform some basic math operations
+    perform_calculation(a, b)
