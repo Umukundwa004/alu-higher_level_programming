@@ -1,3 +1,5 @@
 #!/usr/bin/python3
-def divisible_by_2(my_list=[]):
-    return [num % 2 == 0 for num in my_list]
+def best_score(a_dictionary):
+    if a_dictionary:
+        return max(a_dictionary, key=a_dictionary.get)
+    return None
