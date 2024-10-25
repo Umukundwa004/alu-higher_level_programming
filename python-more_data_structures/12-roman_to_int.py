@@ -2,7 +2,15 @@
 
 
 def roman_to_int(roman_string: str) -> int:
-    
+    """
+    Converts a Roman numeral to an integer
+
+    Args:
+        roman_string (str): the string containing the Roman numeral
+
+    Returns:
+        int: the decimal equivalent of the Roman numeral
+    """
     roman_numerals = {
         "I": 1,
         "V": 5,
