@@ -1,37 +1,35 @@
 #!/usr/bin/python3
+def roman_to_int(roman_string):
+  """Converts a Roman numeral to an integer.
 
+  Args:
+    roman_string: A string representing a Roman numeral.
 
-def roman_to_int(roman_string: str) -> int:
-    """
-    Converts a Roman numeral to an integer
+  Returns:
+    The integer value of the Roman numeral.
 
-    Args:
-        roman_string (str): the string containing the Roman numeral
+  Raises:
+    ValueError: If the roman_string is not a string or None, or if it is not a valid Roman numeral.
+  """
 
-    Returns:
-        int: the decimal equivalent of the Roman numeral
-    """
-    roman_numerals = {
-        "I": 1,
-        "V": 5,
-        "X": 10,
-        "L": 50,
-        "C": 100,
-        "D": 500,
-        "M": 1000,
-    }
+  if not isinstance(roman_string, str) or roman_string is None:
+    raise ValueError("roman_string must be a string")
 
-    if not isinstance(roman_string, str) or roman_string is None:
-        return 0
+  roman_numerals = {
+    "M": 1000,
+    "D": 500,
+    "C": 100,
+    "L": 50,
+    "X": 10,
+    "V": 5,
+    "I": 1,
+  }
 
-    # compute and return the decimal equivalent of the roman numeral received
-    return sum(
-        roman_numerals.get(roman_string[i], 0)
-        if i == 0
-        or roman_numerals.get(roman_string[i], 0)
-        <= roman_numerals[roman_string[i - 1]]
-        # handle subtractive cases
-        else roman_numerals.get(roman_string[i], 0)
-        - 2 * roman_numerals.get(roman_string[i - 1], 0)
-        for i in range(len(roman_string))
-    )
+  result = 0
+  for i in range(len(roman_string)):
+    if roman_numerals[roman_string[i]] < roman_numerals[roman_string[i + 1]]:
+      result -= roman_numerals[roman_string[i]]
+    else:
+      result += roman_numerals[roman_string[i]]
+
+  return result
