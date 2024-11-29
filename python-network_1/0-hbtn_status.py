@@ -1,4 +1,5 @@
- https://alu-intranet.hbtn.io/status  """
+#!/usr/bin/python3
+"""  fetches https://alu-intranet.hbtn.io/status  """
 import urllib.request
 
 url = 'https://intranet.hbtn.io/status'
